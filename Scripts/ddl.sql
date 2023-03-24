@@ -32,3 +32,30 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Books` (
   PRIMARY KEY (`id_book`),
   UNIQUE INDEX `id_book_UNIQUE` (`id_book` ASC) VISIBLE)
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Authors`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Authors` (
+  `id_author` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `birth_date` DATE NOT NULL,
+  `nacionality` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_author`),
+  UNIQUE INDEX `id_author_UNIQUE` (`id_author` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Clients`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Clients` (
+  `id_client` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `direcction` VARCHAR(45) NOT NULL,
+  `mail` VARCHAR(45) NOT NULL,
+  `number` INT NOT NULL,
+  PRIMARY KEY (`id_client`),
+  UNIQUE INDEX `id_client_UNIQUE` (`id_client` ASC) VISIBLE)
+ENGINE = InnoDB;
