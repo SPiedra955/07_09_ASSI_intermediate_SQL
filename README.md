@@ -1,4 +1,4 @@
-# 07_09_ASSI_Intermediate_SQL
+# 07_09_ASSI_intermediate_SQL
 
  ### Table of contents
  [**Introduction**](#introduction)
