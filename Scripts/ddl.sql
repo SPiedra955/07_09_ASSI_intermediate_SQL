@@ -106,29 +106,18 @@ ON UPDATE CASCADE
 );
 
 -- -----------------------------------------------------
--- Table `mydb`.`Books_has_Authors`
+-- Table `Books_has_Authors`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Books_has_Authors` (
-  `Books_id_book` INT NOT NULL,
-  `Authors_id_author` INT NOT NULL,
-  PRIMARY KEY (`Books_id_book`, `Authors_id_author`),
-  INDEX `fk_Books_has_Authors_Authors1_idx` (`Authors_id_author` ASC) VISIBLE,
-  INDEX `fk_Books_has_Authors_Books_idx` (`Books_id_book` ASC) VISIBLE,
-  CONSTRAINT `fk_Books_has_Authors_Books`
-    FOREIGN KEY (`Books_id_book`)
-    REFERENCES `mydb`.`Books` (`id_book`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Books_has_Authors_Authors1`
-    FOREIGN KEY (`Authors_id_author`)
-    REFERENCES `mydb`.`Authors` (`id_author`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
+CREATE TABLE IF NOT EXISTS Books_has_Authors (
+Books_id_book INT NOT NULL,
+Authors_id_author INT NOT NULL,
+PRIMARY KEY (Books_id_book, Authors_id_author),
+CONSTRAINT fk_Books_has_Authors_Books FOREIGN KEY (Books_id_book)
+REFERENCES Books (id_book)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT fk_Books_has_Authors_Authors1 FOREIGN KEY (Authors_id_author)
+REFERENCES Authors (id_author)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+);
