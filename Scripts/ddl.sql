@@ -81,38 +81,29 @@ CHECK(date_of_fired IS NULL OR date_of_hire > date_of_fired),
 UNIQUE (id_employee)
 );
 
-
 -- -----------------------------------------------------
--- Table `mydb`.`Sells`
+-- Table `Sells`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Sells` (
-  `id_sell` INT NOT NULL AUTO_INCREMENT,
-  `date_sell` DATE NOT NULL,
-  `price` DOUBLE NOT NULL,
-  `Books_id_book` INT NOT NULL,
-  `Clients_id_client` INT NOT NULL,
-  `Employees_id_employee` INT NOT NULL,
-  PRIMARY KEY (`id_sell`, `Books_id_book`, `Clients_id_client`, `Employees_id_employee`),
-  UNIQUE INDEX `id_sell_UNIQUE` (`id_sell` ASC) VISIBLE,
-  INDEX `fk_Sells_Books1_idx` (`Books_id_book` ASC) VISIBLE,
-  INDEX `fk_Sells_Clients1_idx` (`Clients_id_client` ASC) VISIBLE,
-  INDEX `fk_Sells_Employees1_idx` (`Employees_id_employee` ASC) VISIBLE,
-  CONSTRAINT `fk_Sells_Books1`
-    FOREIGN KEY (`Books_id_book`)
-    REFERENCES `mydb`.`Books` (`id_book`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Sells_Clients1`
-    FOREIGN KEY (`Clients_id_client`)
-    REFERENCES `mydb`.`Clients` (`id_client`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Sells_Employees1`
-    FOREIGN KEY (`Employees_id_employee`)
-    REFERENCES `mydb`.`Employees` (`id_employee`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS Sells (
+id_sell SERIAL PRIMARY KEY,
+date_sell DATE NOT NULL,
+price NUMERIC(10, 2) NOT NULL,
+books_id_book INT NOT NULL,
+clients_id_client INT NOT NULL,
+employees_id_employee INT NOT NULL,
+CONSTRAINT fk_Sells_Books1 FOREIGN KEY (books_id_book)
+REFERENCES Books (id_book)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT fk_Sells_Clients1 FOREIGN KEY (clients_id_client)
+REFERENCES Clients (id_client)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT fk_Sells_Employees1 FOREIGN KEY (employees_id_employee)
+REFERENCES Employees (id_employee)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+);
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Books_has_Authors`
