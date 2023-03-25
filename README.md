@@ -1,9 +1,9 @@
 # 07_09_ASSI_intermediate_SQL
 
- ### Table of contents
- [**Introduction**](#introduction)
- 
- 
+ ## Table of contents
+ * [**Introduction**](#introduction)
+ * [**Relational diagram**](#relational-diagram)
+
  
  ## Introduction
  
@@ -20,4 +20,18 @@ Indexes
 Users
 Privileges
 Roles
+```
+
+## Relational diagram
+
+
+## Scripts
+### ddl.sql
+ This file contains the script to generate the database in postgres and the type of data to be inserted.
+
+ _Example_:
+
+ - Create the database and check if the database is unique.
+```
+SELECT 'CREATE DATABASE [db_name]' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = '[db_name]')\gexec 
 ```
