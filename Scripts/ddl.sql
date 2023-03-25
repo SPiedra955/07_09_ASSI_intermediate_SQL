@@ -24,70 +24,62 @@ CREATE TABLE IF NOT EXISTS Books (
 );
 
 -- -----------------------------------------------------
--- Table `mydb`.`Authors`
+-- Table `Authors`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Authors` (
-  `id_author` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `birth_date` DATE NOT NULL,
-  `nacionality` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_author`),
-  UNIQUE INDEX `id_author_UNIQUE` (`id_author` ASC) VISIBLE)
-ENGINE = InnoDB;
-
+CREATE TABLE IF NOT EXISTS Authors (
+  id_author SERIAL PRIMARY KEY,
+  name VARCHAR(45) NOT NULL,
+  birth_date DATE NOT NULL,
+  nationality VARCHAR(45) NOT NULL
+);
 
 -- -----------------------------------------------------
--- Table `mydb`.`Clients`
+-- Table `Clients`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Clients` (
-  `id_client` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `direcction` VARCHAR(45) NOT NULL,
-  `mail` VARCHAR(45) NOT NULL,
-  `number` INT NOT NULL,
-  PRIMARY KEY (`id_client`),
-  UNIQUE INDEX `id_client_UNIQUE` (`id_client` ASC) VISIBLE)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS Clients (
+    id_client SERIAL PRIMARY KEY,
+    name VARCHAR(45) NOT NULL,
+    direction VARCHAR(45) NOT NULL,
+    email VARCHAR(45) NOT NULL,
+    number INT NOT NULL,
+    CONSTRAINT id_client_UNIQUE UNIQUE (id_client)
+) WITH (oids = false);
 
 -- -----------------------------------------------------
--- Table `mydb`.`Provideds`
+-- Table `Provideds`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Provideds` (
-  `id_provided` INT NOT NULL AUTO_INCREMENT,
-  `start_date` DATE NOT NULL,
-  `finish_date` DATE NOT NULL,
-  `Books_id_book` INT NOT NULL,
-  `Clients_id_client` INT NOT NULL,
-  PRIMARY KEY (`id_provided`, `Books_id_book`, `Clients_id_client`),
-  UNIQUE INDEX `id_provided_UNIQUE` (`id_provided` ASC) VISIBLE,
-  INDEX `fk_Provideds_Books1_idx` (`Books_id_book` ASC) VISIBLE,
-  INDEX `fk_Provideds_Clients1_idx` (`Clients_id_client` ASC) VISIBLE,
-  CONSTRAINT `fk_Provideds_Books1`
-    FOREIGN KEY (`Books_id_book`)
-    REFERENCES `mydb`.`Books` (`id_book`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Provideds_Clients1`
-    FOREIGN KEY (`Clients_id_client`)
-    REFERENCES `mydb`.`Clients` (`id_client`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+CREATE TABLE IF NOT EXISTS Provideds (
+id_provided SERIAL PRIMARY KEY,
+start_date_loan DATE NOT NULL,
+finish_date_loan DATE NOT NULL,
+books_id_book INT NOT NULL,
+clients_id_client INT NOT NULL,
+CONSTRAINT fk_Provideds_Books1 FOREIGN KEY (books_id_book)
+REFERENCES Books (id_book)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT fk_Provideds_Clients1 FOREIGN KEY (clients_id_client)
+REFERENCES Clients (id_client)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT start_finish_dates_check CHECK (start_date_loan < finish_date_loan)
+);
 
 -- -----------------------------------------------------
--- Table `mydb`.`Employees`
+-- Table `Employees`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Employees` (
-  `id_employee` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `direcction` VARCHAR(45) NOT NULL,
-  `mail` VARCHAR(45) NOT NULL,
-  `number` INT NOT NULL,
-  `job` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_employee`),
-  UNIQUE INDEX `id_employee_UNIQUE` (`id_employee` ASC) VISIBLE)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS Employees (
+id_employee SERIAL PRIMARY KEY,
+name VARCHAR(45) NOT NULL,
+direction VARCHAR(45) NOT NULL,
+email VARCHAR(45) NOT NULL,
+number INT NOT NULL,
+job VARCHAR(45) NOT NULL,
+date_of_hire DATE NOT NULL,
+date_of_fired DATE NULL,
+CHECK(date_of_fired IS NULL OR date_of_hire > date_of_fired),
+UNIQUE (id_employee)
+);
 
 
 -- -----------------------------------------------------
