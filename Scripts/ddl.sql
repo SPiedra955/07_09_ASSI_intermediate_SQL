@@ -20,7 +20,9 @@ CREATE TABLE IF NOT EXISTS Books (
   date_release DATE NOT NULL,
   gender VARCHAR(45) NOT NULL,
   availability SMALLINT NOT NULL,
-  books_images BYTEA
+  id_image INT,
+  name_image VARCHAR(50),
+  binary_image BYTEA
 );
 
 -- -----------------------------------------------------
@@ -36,11 +38,15 @@ CREATE TABLE IF NOT EXISTS Authors (
 -- -----------------------------------------------------
 -- Table `Clients`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Clients (
+CREATE DOMAIN client_data AS VARCHAR NOT NULL CHECK (value !~ '\s');
+
+CREATE TABLE IF NOT EXISTS Clients2 (
     id_client SERIAL PRIMARY KEY,
-    name VARCHAR(45) NOT NULL,
-    direction VARCHAR(45) NOT NULL,
-    email VARCHAR(45) NOT NULL,
+    name client_data,
+    surname client_data,
+    last_name client_data,
+    direction client_data,
+    email VARCHAR(45),
     number INT NOT NULL,
     CONSTRAINT id_client_UNIQUE UNIQUE (id_client)
 ) WITH (oids = false);
@@ -68,13 +74,17 @@ CONSTRAINT start_finish_dates_check CHECK (start_date_loan < finish_date_loan)
 -- -----------------------------------------------------
 -- Table `Employees`
 -- -----------------------------------------------------
+CREATE DOMAIN emplooyees_data AS VARCHAR NOT NULL CHECK (value !~ '\s');
+
 CREATE TABLE IF NOT EXISTS Employees (
 id_employee SERIAL PRIMARY KEY,
-name VARCHAR(45) NOT NULL,
+name  emplooyees_data,
+surname  emplooyees_data,
+last_name emplooyees_data,
 direction VARCHAR(45) NOT NULL,
-email VARCHAR(45) NOT NULL,
+email VARCHAR(45),
 number INT NOT NULL,
-job VARCHAR(45) NOT NULL,
+job VARCHAR(45) emplooyees_data,
 date_of_hire DATE NOT NULL,
 date_of_fired DATE NULL,
 CHECK(date_of_fired IS NULL OR date_of_hire > date_of_fired),
