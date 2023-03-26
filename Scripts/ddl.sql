@@ -6,7 +6,7 @@
 -- Schema library
 -- -----------------------------------------------------
 
-SELECT 'CREATE DATABASE library' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'library')\gexec;
+SELECT 'CREATE DATABASE library' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'library')\gexec
 
 -- -----------------------------------------------------
 -- Table `Books`
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Books (
   category VARCHAR(45) NOT NULL CHECK (category IN ('drama', 'classic', 'history', 'children', 'didactic')),
   ISBN VARCHAR(20) NOT NULL,
   date_release DATE NOT NULL,
-  gender VARCHAR(45) NOT NULL,
+  genre VARCHAR(45) NOT NULL,
   availability SMALLINT NOT NULL,
   id_image INT,
   name_image VARCHAR(50),
@@ -36,11 +36,15 @@ CREATE TABLE IF NOT EXISTS Authors (
 );
 
 -- -----------------------------------------------------
--- Table `Clients`
+-- Domain `client_data`
 -- -----------------------------------------------------
 CREATE DOMAIN client_data AS VARCHAR NOT NULL CHECK (value !~ '\s');
 
-CREATE TABLE IF NOT EXISTS Clients2 (
+-- -----------------------------------------------------
+-- Table `Clients`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS Clients (
     id_client SERIAL PRIMARY KEY,
     name client_data,
     surname client_data,
@@ -72,19 +76,22 @@ CONSTRAINT start_finish_dates_check CHECK (start_date_loan < finish_date_loan)
 );
 
 -- -----------------------------------------------------
+-- Domain `employees_data`
+-- -----------------------------------------------------
+CREATE DOMAIN employees_data AS VARCHAR NOT NULL CHECK (value !~ '\s');
+
+-- -----------------------------------------------------
 -- Table `Employees`
 -- -----------------------------------------------------
-CREATE DOMAIN emplooyees_data AS VARCHAR NOT NULL CHECK (value !~ '\s');
-
 CREATE TABLE IF NOT EXISTS Employees (
 id_employee SERIAL PRIMARY KEY,
-name  emplooyees_data,
-surname  emplooyees_data,
-last_name emplooyees_data,
+name  employees_data,
+surname  employees_data,
+last_name employees_data,
 direction VARCHAR(45) NOT NULL,
 email VARCHAR(45),
 number INT NOT NULL,
-job VARCHAR(45) emplooyees_data,
+job VARCHAR(45) employees_data,
 date_of_hire DATE NOT NULL,
 date_of_fired DATE NULL,
 CHECK(date_of_fired IS NULL OR date_of_hire > date_of_fired),
