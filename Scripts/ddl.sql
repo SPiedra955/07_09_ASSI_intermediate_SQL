@@ -97,8 +97,8 @@ direction VARCHAR(45) NOT NULL,
 email VARCHAR(45),
 phone_number INT NOT NULL,
 job employees_data,
-date_of_hire DATE NOT NULL,
-date_of_fired DATE NOT NULL,
+date_of_hire DATE DEFAULT NULL,
+date_of_fired DATE DEFAULT NULL,
 CHECK(date_of_fired IS NULL OR date_of_hire < date_of_fired),
 UNIQUE (id_employee)
 );
