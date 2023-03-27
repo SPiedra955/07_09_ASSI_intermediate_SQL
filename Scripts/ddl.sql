@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS Books (
   date_release DATE NOT NULL,
   genre VARCHAR(45) NOT NULL,
   availability BOOLEAN NOT NULL,
+  id_image INT,
   name_image VARCHAR(50),
   binary_image BYTEA
 );
@@ -111,7 +112,7 @@ id_sell SERIAL PRIMARY KEY,
 date_sell DATE NOT NULL,
 price NUMERIC(10, 2) NOT NULL,
 books_id_book INT NOT NULL,
-clients_id_client INT NOT NULL,
+clients_id_client DEFAULT NULL,
 employees_id_employee INT NOT NULL,
 CONSTRAINT fk_Sells_Books1 FOREIGN KEY (books_id_book)
 REFERENCES Books (id_book)
