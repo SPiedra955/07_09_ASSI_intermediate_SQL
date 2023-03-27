@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS Clients (
     surname client_data,
     last_name client_data,
     direction VARCHAR(45),
-    email VARCHAR(45),
+    email VARCHAR(45) UNIQUE,
     phone_number INT NOT NULL,
     CONSTRAINT id_client_UNIQUE UNIQUE (id_client)
 ) WITH (oids = false);
