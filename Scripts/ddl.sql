@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS Books (
   date_release DATE NOT NULL,
   genre VARCHAR(45) NOT NULL,
   availability SMALLINT NOT NULL,
-  id_image INT,
   name_image VARCHAR(50),
   binary_image BYTEA
 );
@@ -49,9 +48,9 @@ CREATE TABLE IF NOT EXISTS Clients (
     name client_data,
     surname client_data,
     last_name client_data,
-    direction client_data,
+    direction VARCHAR(45),
     email VARCHAR(45),
-    number INT NOT NULL,
+    phone_number INT NOT NULL,
     CONSTRAINT id_client_UNIQUE UNIQUE (id_client)
 ) WITH (oids = false);
 
@@ -90,11 +89,11 @@ surname  employees_data,
 last_name employees_data,
 direction VARCHAR(45) NOT NULL,
 email VARCHAR(45),
-number INT NOT NULL,
+phone_number INT NOT NULL,
 job employees_data,
 date_of_hire DATE NOT NULL,
-date_of_fired DATE NULL,
-CHECK(date_of_fired IS NULL OR date_of_hire > date_of_fired),
+date_of_fired DATE NOT NULL,
+CHECK(date_of_fired IS NULL OR date_of_hire < date_of_fired),
 UNIQUE (id_employee)
 );
 
