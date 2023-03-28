@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS Authors (
   id_author SERIAL PRIMARY KEY,
   name VARCHAR(45) NOT NULL,
   birth_date DATE NOT NULL,
-  nationality VARCHAR(45) NOT NULL
+  country VARCHAR(45) NOT NULL
 );
 
 -- -----------------------------------------------------
