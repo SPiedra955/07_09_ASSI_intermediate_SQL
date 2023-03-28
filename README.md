@@ -166,6 +166,33 @@ COMMIT;
 
 **UPDATE CASCADE**: When we create a foreign key using UPDATE CASCADE the referencing rows are updated in the child table when the referenced row is updated in the parent table which has a primary key.
 
+ ### Date, time or timestamp data types
+ 
+ Date in SQL is the principal data type to the columns related with dates, the structure is YYYY-MM-DD (Year-Month-Day), although it has more types, and with the time its the same, hh:mm:ss (Hours:Minutes:Seconds).
+ 
+ _Example_:
+ 
+ In this code we have 2 data types **DATE**, in this table we insert the start_date_loan and the finish_date_loan, the finish date cant be smaller than the starter date, for this we use a **CHECK**, checks that the start date is biger than the finish date.
+ 
+ ````
+ CREATE TABLE IF NOT EXISTS Provideds (
+id_provided SERIAL PRIMARY KEY,
+start_date_loan DATE NOT NULL,
+finish_date_loan DATE NOT NULL,
+books_id_book INT NOT NULL,
+clients_id_client INT NOT NULL,
+CONSTRAINT fk_Provideds_Books1 FOREIGN KEY (books_id_book)
+REFERENCES Books (id_book)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT fk_Provideds_Clients1 FOREIGN KEY (clients_id_client)
+REFERENCES Clients (id_client)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT start_finish_dates_check CHECK (start_date_loan < finish_date_loan)
+);
+ ````
+
 
  
  
