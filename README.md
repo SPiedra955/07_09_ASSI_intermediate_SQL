@@ -34,7 +34,7 @@ Roles
 
 ## Relational diagram
 
-![Relational Diagram](relationaldiagram.png)
+![relationaldiagram](https://user-images.githubusercontent.com/114516225/228389644-31c0a89b-66b9-4645-a5d3-b6cc367df0f5.png)
 
 1. In the table **Books** we have a many-to-many relationship with the table **Authors**,this relationship make another table named **Books_has_Authors** because a book can be written by several authors and an author can write several books. **Books** have a relationship one-to-many with **Sells** because since a book can be sold several times but a sale can only correspond to one book, for the last relation of **Books** is with Provideds one-to-many,since a book can be borrowed several times but a loan can only correspond to one book.
 2. For the table **Clients** we have one relationship one-to-many with **Sells**, one client can make more than one buy, but one sold corresponds to one client,and have another one, one-to-many with **Provideds**,since a client can borrow several books but a loan can only be made by one client.
