@@ -203,10 +203,3 @@ ON UPDATE CASCADE,
 CONSTRAINT start_finish_dates_check CHECK (start_date_loan < finish_date_loan)
 );
  ````
-
-
- 
- 
- 
-
-
