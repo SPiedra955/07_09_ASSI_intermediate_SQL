@@ -7,7 +7,7 @@
    * [**Integrity constraint**](#integrity-constraint)
    * [**Referential integrity**](#referential-integrity)
    * [**Cascading actions in referential integrity**](#cascading-actions-in-referential-integrity)
-   * [**Date, time or timestamp data types**](#date-,time-or-timestamp-data-types)
+   * [**Date, time or timestamp data types**](#date,-time-or-timestamp-data-types)
    * [**Binary large objects**](#Binary-large-objects)
    * [**Domains**](#domains)
    * [**Indexes**](#indexes)
