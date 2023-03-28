@@ -26,7 +26,6 @@ CREATE TABLE IF NOT EXISTS Books (
   date_release DATE NOT NULL,
   genre VARCHAR(45) NOT NULL,
   availability BOOLEAN NOT NULL,
-  id_image INT,
   name_image VARCHAR(50),
   binary_image BYTEA
 );
