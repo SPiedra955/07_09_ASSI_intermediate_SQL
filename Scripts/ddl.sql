@@ -112,7 +112,7 @@ id_sell SERIAL PRIMARY KEY,
 date_sell DATE NOT NULL,
 price NUMERIC(10, 2) NOT NULL,
 books_id_book INT NOT NULL,
-clients_id_client DEFAULT NULL,
+clients_id_client INT DEFAULT NULL,
 employees_id_employee INT NOT NULL,
 CONSTRAINT fk_Sells_Books1 FOREIGN KEY (books_id_book)
 REFERENCES Books (id_book)
