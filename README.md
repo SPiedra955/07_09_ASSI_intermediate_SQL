@@ -109,8 +109,12 @@ ON UPDATE CASCADE
 
 ## Database design
 
-### Databse Idea
+### Database Idea
 
-
+In this database we have 7 tables about a library.
+The first table is Authors:
+ |               Authors               |
+ |-------------------------------------|
+ 
 
 
