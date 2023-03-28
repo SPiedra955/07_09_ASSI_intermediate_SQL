@@ -116,6 +116,7 @@ ON UPDATE CASCADE
 ### Cascading actions in referential integrity
 
 _Example 1_:
+
 **DELETE CASCADE**: When we create a foreign key using this option, it deletes the referencing rows in the child table when the referenced row is deleted in the parent table which has a primary key.
 
 In our case our changes are reflected in the table "Books_has_authors" if we delete/update any value inside it, it affects the previous table.e.g;
@@ -163,6 +164,7 @@ SELECT * FROM books_has_authors;
 // End transaction
 COMMIT;
 ```
+_Example 2_:
 
 **UPDATE CASCADE**: When we create a foreign key using UPDATE CASCADE the referencing rows are updated in the child table when the referenced row is updated in the parent table which has a primary key.
 
@@ -172,7 +174,7 @@ COMMIT;
  
  _Example_:
  
- In this code we have 2 data types **DATE**, in this table we insert the start_date_loan and the finish_date_loan, the finish date cant be smaller than the starter date, for this we use a **CHECK**, checks that the start date is biger than the finish date.
+ In this code we have 2 data types **DATE**, in this table we insert the start_date_loan and the finish_date_loan, the finish date cant be smaller than the starter date, for this we use a **CHECK**, checks that the start date is bigger than the finish date.
  
  ````
  CREATE TABLE IF NOT EXISTS Provideds (
