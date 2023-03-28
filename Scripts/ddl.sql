@@ -9,7 +9,7 @@
 SELECT 'CREATE DATABASE library' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'library')\gexec
 
 -- -----------------------------------------------------
--- Connect to the data base
+-- Connect to the database
 -- -----------------------------------------------------
 
 \c library;
