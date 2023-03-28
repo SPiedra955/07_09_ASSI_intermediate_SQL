@@ -4,7 +4,6 @@
  * [**Introduction**](#introduction)
  * [**Relational diagram**](#relational-diagram)
  * [**Data definition**](#data-definition)
- * [**Database Design**](#database-design)
 
  
  ## Introduction
@@ -25,6 +24,13 @@ Roles
 ```
 
 ## Relational diagram
+
+![Relational Diagram](relationaldiagram.png)
+
+1. In the table **Books** we have a many-to-many relationship with the table **Authors**,this relationship make another table named **Books_has_Authors** because a book can be written by several authors and an author can write several books. **Books** have a relationship one-to-many with **Sells** because since a book can be sold several times but a sale can only correspond to one book, for the last relation of **Books** is with Provideds one-to-many,since a book can be borrowed several times but a loan can only correspond to one book.
+2. For the table **Clients** we have one relationship one-to-many with **Sells**, one client can make more than one buy, but one sold corresponds to one client,and have another one, one-to-many with **Provideds**,since a client can borrow several books but a loan can only be made by one client.
+3. The table **Employees** would have one relationship one-to-many with the table **Sells**, as one employee can make several sales but one sale can only be made by one employee.
+
 
 
 ## Scripts
@@ -106,15 +112,9 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 );
 ````
-
-## Database design
-
-### Database Idea
-
-In this database we have 7 tables about a library.
-The first table is Authors:
- |               Authors               |
- |-------------------------------------|
+ 
+ 
+ 
  
 
 
