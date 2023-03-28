@@ -4,8 +4,17 @@
  * [**Introduction**](#introduction)
  * [**Relational diagram**](#relational-diagram)
  * [**Data definition**](#data-definition)
+   * [**Integrity constraint**](#integrity-constraint)
+   * [**Referential integrity**](#referential-integrity)
+   * [**Cascading actions in referential integrity**](#cascading-actions-in-referential-integrity)
+   * [**Date, time or timestamp data types**](#date-,time-or-timestamp-data-types)
+   * [**Binary large objects**](#Binary-large-objects)
+   * [**Domains**](#domains)
+   * [**Indexes**](#indexes)
+   * [**Users**](#users)
+   * [**Privileges**](#privileges)
+   * [**Roles**](#roles)
 
- 
  ## Introduction
  
 In this task in pairs done by Samuel Piedra 🙋 & Fran González, we have to create a database using intermediate sql querys, it is a task in which we have to try to put all the knowledge acquired during the present course and also try to apply in our database script the following data.
