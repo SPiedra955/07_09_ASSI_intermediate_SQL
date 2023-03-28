@@ -112,7 +112,61 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 );
 ````
- 
+
+### Cascading actions in referential integrity
+
+_Example 1_:
+**DELETE CASCADE**: When we create a foreign key using this option, it deletes the referencing rows in the child table when the referenced row is deleted in the parent table which has a primary key.
+
+In our case our changes are reflected in the table "Books_has_authors" if we delete/update any value inside it, it affects the previous table.e.g;
+
+```
+//Start transaction
+BEGIN;
+// Savepoint created
+SAVEPOINT undo;
+// Delete some data
+DELETE FROM books WHERE id_book = 1;
+// Check the changes
+SELECT * FROM books_has_authors;
+// Results
+ books_id_book | authors_id_author
+---------------+-------------------
+             2 |                 2
+             3 |                 3
+             4 |                 4
+             5 |                 5
+             6 |                 6
+             7 |                 7
+             8 |                 8
+             9 |                 9
+(8 rows)
+
+// Use savapoint if it's necessary
+ROLLBACK TO undo;
+// Undone changes
+SELECT * FROM books_has_authors;
+// Results
+ books_id_book | authors_id_author
+---------------+-------------------
+             1 |                 1
+             2 |                 2
+             3 |                 3
+             4 |                 4
+             5 |                 5
+             6 |                 6
+             7 |                 7
+             8 |                 8
+             9 |                 9
+(9 rows)
+
+// End transaction
+COMMIT;
+```
+
+**UPDATE CASCADE**: When we create a foreign key using UPDATE CASCADE the referencing rows are updated in the child table when the referenced row is updated in the parent table which has a primary key.
+
+
  
  
  
