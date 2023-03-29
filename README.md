@@ -267,7 +267,76 @@ _Expected output readData.py_:
 ![image](https://user-images.githubusercontent.com/114516225/228411487-4be90471-65ba-4813-a8b5-7a8162da0785.png)
 
 ### Domains
+
+In postgres a domain is data type with optional constrains, **NOT NULL** and **CHECK**. A domain uses a unique name within the schema scope.
+We use domains for the management of fields with common constrains like some tables may have the same column that not accept **NULL** and spaces.
+
+_Example_:
+ 
+In our code we use this domain for three different columns having the sames constrains: 
+````
+CREATE DOMAIN client_data AS VARCHAR NOT NULL CHECK (value !~ '\s');
+CREATE TABLE IF NOT EXISTS Clients (
+    id_client SERIAL PRIMARY KEY,
+    name client_data,
+    surname client_data,
+    last_name client_data,
+    direction VARCHAR(45),
+    email VARCHAR(45) UNIQUE,
+    phone_number INT NOT NULL,
+    CONSTRAINT id_client_UNIQUE UNIQUE (id_client)
+) WITH (oids = false);
+````
+This domain take's the constrains **VARCHAR NOT NULL** and with the **CHECK** we check that there are no spaces.
+
 ### Indexes
-### Users
-### Privileges
+
+An index is used for fast retrieval of data from a table. An index will speed up operations on the **SELECT** quey and will also support in **WHERE** clause for fast retrieval of data.
+For this we use the **PK (Primary key's)** and the **FK (Foreing key's)** this make's easier the connection between tables.
+
+````
+CREATE TABLE IF NOT EXISTS Employees (
+id_employee SERIAL PRIMARY KEY,
+name  employees_data,
+surname  employees_data,
+last_name employees_data,
+direction VARCHAR(45) NOT NULL,
+email VARCHAR(45),
+phone_number INT NOT NULL,
+job employees_data,
+date_of_hire DATE DEFAULT NULL,
+date_of_fired DATE DEFAULT NULL,
+CHECK(date_of_fired IS NULL OR date_of_hire < date_of_fired),
+UNIQUE (id_employee)
+);
+````
+
+### Users and Privileges
+
+Users in SQL is a way to manage the privileges that different people can have on a database.
+With this command we will be able to give different privileges to a user:
+
+_Example_:
+````
+GRANT ALL PRIVILEGES ON DATABASE database_name TO user_name;
+
+GRANT INSERT, UPDATE ON table_name TO user_name;
+
+GRANT SELECT ON table_name TO user_name;
+
+````
 ### Roles
+
+SQL rols are a way to speed up the action of giving privileges to users, as we can see in the previous example, we can see that we are giving privileges to users one by one.
+
+We can create a role, which is like creating a group with a series of privileges and then when the users are created, you assign that group to them so that they have the corresponding privileges.
+
+_Example_:
+````
+
+CREATE ROLE new_role WITH LOGIN PASSWORD 'password';
+GRANT SELECT, INSERT, UPDATE ON table_name TO new_role;
+
+CREATE USER user_name WITH LOGIN PASSWORD 'password' IN ROLE role_name;
+
+````
