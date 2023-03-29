@@ -11,7 +11,7 @@
    * [**Binary large objects**](#binary-large-objects)
    * [**Domains**](#domains)
    * [**Indexes**](#indexes)
-   * [**Users and Privileges**](#users)
+   * [**Users and Privileges**](#users-and-privileges)
    * [**Roles**](#roles)
 
 ## Introduction
@@ -52,7 +52,10 @@ Roles
 SELECT 'CREATE DATABASE [db_name]' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = '[db_name]')\gexec 
 ```
 ### [dml.sql](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/Scripts/dml.sql)
-Once the database is created, with this script we can insert some data with which we'll proceed later on to make some example queries.
+Once the database is created, with this script we can insert some data.
+
+### [dlc.sql]()
+This script is responsible for the administrative tasks of controlling the database itself, especially the granting and revoking of database permissions for users. In SQL, this corresponds to the GRANT, REVOKE, and DENY commands, among others.
 
 ## Data definition
 In this section we will explain how the data is constructed and defined to make its functionality clear and we also model the data to use the keywords mentioned in the introduction.
@@ -328,12 +331,15 @@ CREATE USER:
 ````
 CREATE USER usuario1 WITH PASSWORD 'password1';
 ````
-
+GRANT PRIVILEGES TO CONNECT TO THE DATABASE:
+```
+GRANT CONNECT ON DATABASE library TO usuario1;
+```
 PRIVILEGES TO THE USER:
 ````
 GRANT ALL PRIVILEGES ON DATABASE database_name TO user_name;
 
-GRANT INSERT, UPDATE ON table_name TO user_name;
+GRANT SELECT, UPDATE, DELETE, INSERT ON table_name TO user_name;
 
 GRANT SELECT ON table_name TO user_name;
 
@@ -346,9 +352,39 @@ We can create a role, which is like creating a group with a series of privileges
 
 _Example_:
 
+In the code below we created a role with a login privilege and some permissions:
+
 ````
 CREATE ROLE new_role WITH LOGIN PASSWORD 'password';
 GRANT SELECT, INSERT, UPDATE ON table_name TO new_role;
-
-CREATE USER user_name WITH LOGIN PASSWORD 'password' IN ROLE role_name;
 ````
+List all the roles of the database server:
+````
+SELECT rolname FROM pg_roles;
+````
+List the role in the current database:
+````
+\du
+````
+Adding to our role permissions like SUPERUSER(read,write,execute, update privileges):
+````
+ALTER ROLE new_role WITH superuser;
+````
+Adding a date of expiring for connections
+````
+ALTER ROLE new_role WITH VALID UNTIL '2025-09-09';
+````
+Check the changes
+````
+\du
+```
+_Expected output_:
+
+                                     List of roles
+   Role name   |                         Attributes                         | Member of
+---------------+------------------------------------------------------------+-----------
+ admin         | Superuser                                                 +| {}
+               | Password valid until 2025-09-09 00:00:00+00                |
+ administrator |                                                            | {}
+ postgres      | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ samu          |                                                            | {}
