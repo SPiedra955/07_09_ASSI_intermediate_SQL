@@ -7,7 +7,7 @@
    * [**Integrity constraint**](#integrity-constraint)
    * [**Referential integrity**](#referential-integrity)
    * [**Cascading actions in referential integrity**](#cascading-actions-in-referential-integrity)
-   * [**Date, time or timestamp data types**](#date,-time-or-timestamp-data-types)
+   * [**Date or time data types**](#date-or-time-data-types)
    * [**Binary large objects**](#Binary-large-objects)
    * [**Domains**](#domains)
    * [**Indexes**](#indexes)
@@ -193,7 +193,6 @@ SELECT * FROM sells;
        6 | 2023-01-30 | 15.99 |             6 |                 4 |                     2
        7 | 2023-01-30 | 20.00 |             9 |                   |                     1
 (7 rows)
-(7 rows)
 
 // Run the following commands
 UPDATE books SET id_book = 20 WHERE id_book = 9;
@@ -215,7 +214,7 @@ SELECT * FROM sells;
 
 ```
 
- ### Date, time or timestamp data types
+ ### Date or time data types
  
  Date in SQL is the principal data type to the columns related with dates, the structure is YYYY-MM-DD (Year-Month-Day), although it has more types, and with the time its the same, hh:mm:ss (Hours:Minutes:Seconds).
  
