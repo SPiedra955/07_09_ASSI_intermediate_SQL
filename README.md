@@ -327,15 +327,15 @@ With this command we will be able to give different privileges to a user:
 
 _Example_:
 
-CREATE USER:
+Create user:
 ````
 CREATE USER usuario1 WITH PASSWORD 'password1';
 ````
-GRANT PRIVILEGES TO CONNECT TO THE DATABASE:
+Grant privileges to connect to the database:
 ```
 GRANT CONNECT ON DATABASE library TO usuario1;
 ```
-PRIVILEGES TO THE USER:
+Privileges to the user:
 ````
 GRANT ALL PRIVILEGES ON DATABASE database_name TO user_name;
 
@@ -377,9 +377,10 @@ ALTER ROLE new_role WITH VALID UNTIL '2025-09-09';
 Check the changes
 ````
 \du
-```
+````
 _Expected output_:
 
+````
                                      List of roles
    Role name   |                         Attributes                         | Member of
 ---------------+------------------------------------------------------------+-----------
@@ -388,3 +389,4 @@ _Expected output_:
  administrator |                                                            | {}
  postgres      | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
  samu          |                                                            | {}
+ ````
