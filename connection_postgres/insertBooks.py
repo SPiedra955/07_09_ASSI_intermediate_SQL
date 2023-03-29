@@ -22,15 +22,15 @@ try:
 	# open('File,'rb').read() is used to read the file.
 	# where open(File,'rb').read() will return the binary data of the file.
 	# psycopg2.Binary(File_in_Bytes) is used to convert the binary data to a BLOB data type.
-    BLOB_1 = psycopg2.Binary(open('files\ElQuijote.jpg', 'rb').read()) 
-    BLOB_2 = psycopg2.Binary(open('files\LePetitPrince.jpg', 'rb').read())
-    BLOB_3 = psycopg2.Binary(open('files\TheBoyInPajamas.jpg', 'rb').read())
-    BLOB_4 = psycopg2.Binary(open('files\AprenderEconomia.jpg', 'rb').read())
-    BLOB_5 = psycopg2.Binary(open('files\LasChicasDeAlambre.jpg', 'rb').read())
-    BLOB_6 = psycopg2.Binary(open('files\AsiEsLaPutaVida.jpg', 'rb').read()) 
-    BLOB_7 = psycopg2.Binary(open('files\ComoDejarDeFumar.jpg', 'rb').read())
-    BLOB_8 = psycopg2.Binary(open('files\MiUnicaEstrella.jpg', 'rb').read())
-    BLOB_9 = psycopg2.Binary(open('files\Pokemon.jpg', 'rb').read())
+    BLOB_1 = psycopg2.Binary(open('img\ElQuijote.jpg', 'rb').read()) 
+    BLOB_2 = psycopg2.Binary(open('img\LePetitPrince.jpg', 'rb').read())
+    BLOB_3 = psycopg2.Binary(open('img\TheBoyInPajamas.jpg', 'rb').read())
+    BLOB_4 = psycopg2.Binary(open('img\AprenderEconomia.jpg', 'rb').read())
+    BLOB_5 = psycopg2.Binary(open('img\LasChicasDeAlambre.jpg', 'rb').read())
+    BLOB_6 = psycopg2.Binary(open('img\AsiEsLaPutaVida.jpg', 'rb').read()) 
+    BLOB_7 = psycopg2.Binary(open('img\ComoDejarDeFumar.jpg', 'rb').read())
+    BLOB_8 = psycopg2.Binary(open('img\MiUnicaEstrella.jpg', 'rb').read())
+    BLOB_9 = psycopg2.Binary(open('img\Pokemon.jpg', 'rb').read())
 
 	# And Finally we pass the above mentioned values to the insert_script variable.
     insert_values = [('Don Quixote', 'Miguel de Cervantes', 'classic', '978-0142437230', '1605-01-16',
@@ -54,9 +54,9 @@ try:
                     ]
     
 	# The execute() method with the insert_script & insert_value as argument.
-    for insert_value in insert_values:
+    for index, insert_value in enumerate(insert_values):
         cur.execute(insert_script, insert_value)
-        print(insert_value[0], insert_value[1], "[Binary Data]", "row Inserted Successfully")
+        print(index + 1, insert_value[7], "[Binary Data]", "row Inserted Successfully") # index of the column
 
 	# Commit the changes to the database
     conn.commit()
