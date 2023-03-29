@@ -54,7 +54,7 @@ SELECT 'CREATE DATABASE [db_name]' WHERE NOT EXISTS (SELECT FROM pg_database WHE
 ### [dml.sql](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/Scripts/dml.sql)
 Once the database is created, with this script we can insert some data.
 
-### [dlc.sql]()
+### [dlc.sql](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/Scripts/dcl.sql)
 This script is responsible for the administrative tasks of controlling the database itself, especially the granting and revoking of database permissions for users. In SQL, this corresponds to the GRANT, REVOKE, and DENY commands, among others.
 
 ## Data definition
