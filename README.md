@@ -44,13 +44,7 @@ Roles
 ## Scripts
 ### [ddl.sql](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/Scripts/ddl.sql)
  This file contains the script to generate the database in postgres and the type of data to be inserted.
-
- _Example_:
-
- - Create the database and check if the database is unique.
-```
-SELECT 'CREATE DATABASE [db_name]' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = '[db_name]')\gexec 
-```
+ 
 ### [dml.sql](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/Scripts/dml.sql)
 Once the database is created, with this script we can insert some data.
 
