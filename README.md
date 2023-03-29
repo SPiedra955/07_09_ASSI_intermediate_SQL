@@ -181,7 +181,7 @@ _Example 2_:
 
 ```
 // We change the values of the tables 'Books', 'Customers' and 'Employees' and these will change in the following table
-select * from sells;
+SELECT * FROM sells;
 
  id_sell | date_sell  | price | books_id_book | clients_id_client | employees_id_employee
 ---------+------------+-------+---------------+-------------------+-----------------------
@@ -193,24 +193,25 @@ select * from sells;
        6 | 2023-01-30 | 15.99 |             6 |                 4 |                     2
        7 | 2023-01-30 | 20.00 |             9 |                   |                     1
 (7 rows)
+(7 rows)
 
 // Run the following commands
 UPDATE books SET id_book = 20 WHERE id_book = 9;
 UPDATE clients SET id_client = 20 WHERE id_client = 1;
 UPDATE employees SET id_employee = 20 WHERE id_employee = 2
-// Check the changes
-select books_id_book, clients_id_client, employees_id_employee from sells;
+// Check the changes, the whole table has been updated and has a new order
+SELECT * FROM sells;
 
- books_id_book | clients_id_client | employees_id_employee
----------------+-------------------+-----------------------
-             6 |                   |                     1
-             5 |                20 |                     1
-             5 |                 2 |                    20
-             3 |                   |                    20
-             4 |                   |                    20
-             6 |                 4 |                    20
-            20 |                   |                     1      
-(7 rows)
+ id_sell | date_sell  | price | books_id_book | clients_id_client | employees_id_employee
+---------+------------+-------+---------------+-------------------+-----------------------
+       5 | 2023-01-30 | 13.99 |             6 |                   |                     1
+       7 | 2023-01-30 | 20.00 |            20 |                   |                     1
+       1 | 2022-09-25 | 19.99 |             5 |                20 |                     1
+       2 | 2023-01-17 | 15.99 |             5 |                 2 |                    20
+       3 | 2023-03-09 |  9.99 |             3 |                   |                    20
+       4 | 2023-02-14 | 19.99 |             4 |                   |                    20
+       6 | 2023-01-30 | 15.99 |             6 |                 4 |                    20
+(7 rows)  
 
 ```
 
