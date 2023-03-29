@@ -8,7 +8,7 @@
    * [**Referential integrity**](#referential-integrity)
    * [**Cascading actions in referential integrity**](#cascading-actions-in-referential-integrity)
    * [**Date or time data types**](#date-or-time-data-types)
-   * [**Binary large objects**](#Binary-large-objects)
+   * [**Binary large objects**](#binary-large-objects)
    * [**Domains**](#domains)
    * [**Indexes**](#indexes)
    * [**Users**](#users)
@@ -239,4 +239,32 @@ ON DELETE CASCADE
 ON UPDATE CASCADE,
 CONSTRAINT start_finish_dates_check CHECK (start_date_loan < finish_date_loan)
 );
- ````
+
+````
+
+### Binary large objects
+
+Binary large object or BLOB is a collection of binary data stored as a single entity. Blobs are usually images, audio or other multimedia objects, although sometimes executable binary code is stored as a blob. 
+
+For our database we have created a python file called [insertBooks.py](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/connection_postgres/insertBooks.py) which is already commented and ready to insert values into a table, there is also another file to retrieve the blob data called [retrieveData.py](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/connection_postgres/retrieveData.py) which allows us to download the images inserted with the first python file.
+
+The data type we will use to insert into our database are [images](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/tree/main/img) for our books.
+
+There is a last file [readData.py](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/connection_postgres/readData.py) that helps us to read data stored as binaries that are difficult to display in a postgres terminal.
+
+_Expected output insertBooks.py_:
+
+![image](https://user-images.githubusercontent.com/114516225/228408923-0ac971e1-19bb-4e0b-ab8f-cb90c7bd336a.png)
+
+_Expected output to retrieveData.py_:
+
+![image](https://user-images.githubusercontent.com/114516225/228410406-46e5bf7f-ce35-4ae0-b51b-9f616cae2d2e.png)
+
+![image](https://user-images.githubusercontent.com/114516225/228410951-9ebc367c-fb4e-4397-b298-d81a0a64cebe.png)
+
+_Expected output readData.py_:
+
+![image](https://user-images.githubusercontent.com/114516225/228411487-4be90471-65ba-4813-a8b5-7a8162da0785.png)
+
+
+
