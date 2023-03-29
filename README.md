@@ -11,8 +11,7 @@
    * [**Binary large objects**](#binary-large-objects)
    * [**Domains**](#domains)
    * [**Indexes**](#indexes)
-   * [**Users**](#users)
-   * [**Privileges**](#privileges)
+   * [**Users and Privileges**](#users)
    * [**Roles**](#roles)
 
 ## Introduction
