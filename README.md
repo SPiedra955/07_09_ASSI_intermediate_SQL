@@ -131,7 +131,7 @@ _Example 1_:
 In our case our changes are reflected in the table "Books_has_authors" if we delete/update any value inside it, it affects the previous table.e.g;
 
 ```
-//Start transaction
+// Start transaction
 BEGIN;
 // Savepoint created
 SAVEPOINT undo;
@@ -140,6 +140,7 @@ DELETE FROM books WHERE id_book = 1;
 // Check the changes
 SELECT * FROM books_has_authors;
 // Results
+
  books_id_book | authors_id_author
 ---------------+-------------------
              2 |                 2
@@ -157,6 +158,7 @@ ROLLBACK TO undo;
 // Undone changes
 SELECT * FROM books_has_authors;
 // Results
+
  books_id_book | authors_id_author
 ---------------+-------------------
              1 |                 1
@@ -176,6 +178,41 @@ COMMIT;
 _Example 2_:
 
 **UPDATE CASCADE**: When we create a foreign key using UPDATE CASCADE the referencing rows are updated in the child table when the referenced row is updated in the parent table which has a primary key.
+
+```
+// We change the values of the tables 'Books', 'Customers' and 'Employees' and these will change in the following table
+select * from sells;
+
+ id_sell | date_sell  | price | books_id_book | clients_id_client | employees_id_employee
+---------+------------+-------+---------------+-------------------+-----------------------
+       1 | 2022-09-25 | 19.99 |             5 |                 1 |                     1
+       2 | 2023-01-17 | 15.99 |             5 |                 2 |                     2
+       3 | 2023-03-09 |  9.99 |             3 |                   |                     2
+       4 | 2023-02-14 | 19.99 |             4 |                   |                     2
+       5 | 2023-01-30 | 13.99 |             6 |                   |                     1
+       6 | 2023-01-30 | 15.99 |             6 |                 4 |                     2
+       7 | 2023-01-30 | 20.00 |             9 |                   |                     1
+(7 rows)
+
+// Run the following commands
+UPDATE books SET id_book = 20 WHERE id_book = 9;
+UPDATE clients SET id_client = 20 WHERE id_client = 1;
+UPDATE employees SET id_employee = 20 WHERE id_employee = 2
+// Check the changes
+select books_id_book, clients_id_client, employees_id_employee from sells;
+
+ books_id_book | clients_id_client | employees_id_employee
+---------------+-------------------+-----------------------
+             6 |                   |                     1
+             5 |                20 |                     1
+             5 |                 2 |                    20
+             3 |                   |                    20
+             4 |                   |                    20
+             6 |                 4 |                    20
+            20 |                   |                     1      
+(7 rows)
+
+```
 
  ### Date, time or timestamp data types
  
