@@ -19,7 +19,7 @@ try:
 	# open(file,'wb').write() is used to write the binary data to the file.
 	for row in cur.fetchall():
 		BLOB = row[9] # index of the column where the blob data is
-		open("new_"+row[8], 'wb').write(BLOB) #index of the column with the title of the book
+		open("new_"+row[8], 'wb').write(BLOB) #index of the column with the title of the image
 		print(row[0], row[1], "BLOB Data is saved in Current Directory") 
 
 	# Close the connection
