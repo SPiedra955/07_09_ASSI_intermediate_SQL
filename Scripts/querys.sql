@@ -24,4 +24,12 @@
 
  SELECT COUNT(*) AS employees_hired_last_year FROM employees e WHERE e.date_of_hire >= now() - INTERVAL '3 years';
 
- --
+-- This query calculates the age of the book using his date of release
+
+SELECT title, EXTRACT(YEAR FROM age(now(), date_release)) AS book_age FROM books;
+
+-- For know the book in loan the last ten days
+
+SELECT b.title, p.finish_date_loan FROM provideds p INNER JOIN books b ON p.books_id_book = b.id_book AND finish_date_loan BETWEEN '2023-03-15' AND '2023-03-25';
+
+
