@@ -1,4 +1,5 @@
--- For insert the data in the table 'Books' we have to run a python file.
+-- For insert the data in the table 'Books' we have to run a python file and use the folder img.
+-- https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/connection_postgres/insertBooks.py
 
 -- Data for insert into 'Authors'
 
