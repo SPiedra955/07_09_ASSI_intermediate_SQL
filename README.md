@@ -318,8 +318,15 @@ UNIQUE (id_employee)
 Users in SQL is a way to manage the privileges that different people can have on a database.
 With this command we will be able to give different privileges to a user:
 
+
 _Example_:
 
+CREATE USER:
+````
+CREATE USER usuario1 WITH PASSWORD 'password1';
+````
+
+PRIVILEGES TO THE USER:
 ````
 GRANT ALL PRIVILEGES ON DATABASE database_name TO user_name;
 
