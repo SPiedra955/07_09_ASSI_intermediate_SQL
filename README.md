@@ -315,7 +315,7 @@ UNIQUE (id_employee)
 
 ### Users and Privileges
 
-Users in SQL is a way to manage the privileges that different people can have on a database.
+Users in SQL is a way to manage the privileges(permissions) that different people can have on a database.
 With this command we will be able to give different privileges to a user:
 
 
