@@ -1,3 +1,4 @@
+# Install the library with the command 'pip install psycopg2'
 import psycopg2
 
 conn = None
