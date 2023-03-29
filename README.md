@@ -51,6 +51,8 @@ Once the database is created, with this script we can insert some data.
 ### [dlc.sql](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/Scripts/dcl.sql)
 This script is responsible for the administrative tasks of controlling the database itself, especially the granting and revoking of database permissions for users. In SQL, this corresponds to the GRANT, REVOKE, and DENY commands, among others.
 
+### [querys.sql]()
+
 ## Data definition
 In this section we will explain how the data is constructed and defined to make its functionality clear and we also model the data to use the keywords mentioned in the introduction.
 ### Integrity constraint
