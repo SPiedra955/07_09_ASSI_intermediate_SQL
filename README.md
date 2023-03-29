@@ -225,7 +225,7 @@ In our tables such as 'Books', 'Borrowed', 'Sold' and others, we implement dates
  In this code we have 2 data types **DATE**, in this table we insert the start_date_loan and the finish_date_loan, the finish date can't be smaller than the starter date, for this we use a **CHECK**, checks that the start date is bigger than the finish date.
  
  ````
- CREATE TABLE IF NOT EXISTS Provideds (
+CREATE TABLE IF NOT EXISTS Provideds (
 id_provided SERIAL PRIMARY KEY,
 start_date_loan DATE NOT NULL,
 finish_date_loan DATE NOT NULL,
@@ -277,7 +277,10 @@ _Example_:
  
 In our code we use this domain for three different columns having the sames constrains: 
 ````
+//Create domain of type VARCHAR and NOT NULL.
 CREATE DOMAIN client_data AS VARCHAR NOT NULL CHECK (value !~ '\s');
+
+//Assigning the domain to the corresponding columns.
 CREATE TABLE IF NOT EXISTS Clients (
     id_client SERIAL PRIMARY KEY,
     name client_data,
