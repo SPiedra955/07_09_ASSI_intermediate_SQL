@@ -267,8 +267,8 @@ _Expected output readData.py_:
 
 ### Domains
 
-In postgres a domain is data type with optional constrains, **NOT NULL** and **CHECK**. A domain uses a unique name within the schema scope.
-We use domains for the management of fields with common constrains like some tables may have the same column that not accept **NULL** and spaces.
+In postgres a domain is data type with optional constraint like **NOT NULL** and **CHECK**. When a domain it's create his name is unique in the schema scope.
+We use domains for the management of fields with common constraints like some tables may have the same column that not accept **NULL** and spaces.
 
 _Example_:
  
@@ -290,7 +290,7 @@ This domain take's the constrains **VARCHAR NOT NULL** and with the **CHECK** we
 
 ### Indexes
 
-An index is used for fast retrieval of data from a table. An index will speed up operations on the **SELECT** quey and will also support in **WHERE** clause for fast retrieval of data.
+An index is used for fast retrieval of data from a table. An index will speed up operations on the **SELECT** query and will also support in **WHERE** clause for fast retrieval of data.
 For this we use the **PK (Primary key's)** and the **FK (Foreing key's)** this make's easier the connection between tables.
 
 ````
@@ -316,6 +316,7 @@ Users in SQL is a way to manage the privileges that different people can have on
 With this command we will be able to give different privileges to a user:
 
 _Example_:
+
 ````
 GRANT ALL PRIVILEGES ON DATABASE database_name TO user_name;
 
@@ -326,16 +327,15 @@ GRANT SELECT ON table_name TO user_name;
 ````
 ### Roles
 
-SQL rols are a way to speed up the action of giving privileges to users, as we can see in the previous example, we can see that we are giving privileges to users one by one.
+SQL roles are a way to speed up the action of giving privileges to users, as we can see in the previous example, we can see that we are giving privileges to users one by one.
 
 We can create a role, which is like creating a group with a series of privileges and then when the users are created, you assign that group to them so that they have the corresponding privileges.
 
 _Example_:
-````
 
+````
 CREATE ROLE new_role WITH LOGIN PASSWORD 'password';
 GRANT SELECT, INSERT, UPDATE ON table_name TO new_role;
 
 CREATE USER user_name WITH LOGIN PASSWORD 'password' IN ROLE role_name;
-
 ````
