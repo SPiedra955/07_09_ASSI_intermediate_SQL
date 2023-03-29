@@ -216,11 +216,11 @@ SELECT * FROM sells;
 
  ### Date or time data types
  
- Date in SQL is the principal data type to the columns related with dates, the structure is YYYY-MM-DD (Year-Month-Day), although it has more types, and with the time its the same, hh:mm:ss (Hours:Minutes:Seconds).
+In our tables such as 'Books', 'Borrowed', 'Sold' and others, we implement dates for borrowed books and to record sales, the date of publication of a book, etc. The structure of our dates is YYYYY-MM-DD (Year-Month-Day).
  
  _Example_:
  
- In this code we have 2 data types **DATE**, in this table we insert the start_date_loan and the finish_date_loan, the finish date cant be smaller than the starter date, for this we use a **CHECK**, checks that the start date is bigger than the finish date.
+ In this code we have 2 data types **DATE**, in this table we insert the start_date_loan and the finish_date_loan, the finish date can't be smaller than the starter date, for this we use a **CHECK**, checks that the start date is bigger than the finish date.
  
  ````
  CREATE TABLE IF NOT EXISTS Provideds (
@@ -266,5 +266,8 @@ _Expected output readData.py_:
 
 ![image](https://user-images.githubusercontent.com/114516225/228411487-4be90471-65ba-4813-a8b5-7a8162da0785.png)
 
-
-
+### Domains
+### Indexes
+### Users
+### Privileges
+### Roles
