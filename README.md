@@ -42,7 +42,7 @@ Roles
 
 
 ## Scripts
-### ddl.sql
+### [ddl.sql](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/Scripts/ddl.sql)
  This file contains the script to generate the database in postgres and the type of data to be inserted.
 
  _Example_:
@@ -51,6 +51,9 @@ Roles
 ```
 SELECT 'CREATE DATABASE [db_name]' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = '[db_name]')\gexec 
 ```
+### [dml.sql](https://github.com/SPiedra955/07_09_ASSI_intermediate_SQL/blob/main/Scripts/dml.sql)
+Once the database is created, with this script we can insert some data with which we'll proceed later on to make some example queries.
+
 ## Data definition
 In this section we will explain how the data is constructed and defined to make its functionality clear and we also model the data to use the keywords mentioned in the introduction.
 ### Integrity constraint
